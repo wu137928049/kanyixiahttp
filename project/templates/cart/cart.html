@@ -1,0 +1,13 @@
+{% extends 'base/base_main.html' %}
+{% load static %}
+{% block extStyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/cart/cart.css' %}">
+{% endblock %}
+{% block exSprict %}
+    <script type="text/javascript" src="{% static 'app/cart/js/cart.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

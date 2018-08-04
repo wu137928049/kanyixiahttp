@@ -1,0 +1,145 @@
+{% extends 'base/base_main.html' %}
+{% load static %}
+
+{% block extStyle %}
+    {{ block.super }}
+       <link rel="stylesheet" type="text/css" href="{% static '/app/home/home.css'%}">
+{% endblock %}
+{% block exScript%}
+    <script type="text/javascript" src="{% static '/app/home/home.js' %}"></script>
+{% endblock %}
+
+
+
+
+{% block content %}
+    <div id="home">
+
+{#    头部轮播图  #}
+    <div  class="swiper-container"  id="topSwiper" >
+        <div class="swiper-wrapper">
+            {% for foo in wheel %}
+            <div class="swiper-slide">
+                <a>
+                   <img src="{{ foo.img }}">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+            <div class="swiper-pagination"></div>
+    </div>
+
+
+
+{# 每日必抢    #}
+    <div class="topMenu">
+        <nav>
+            <ul>
+                {% for foo in nav %}
+                    <li>
+                        <img src="{{ foo.img }}">
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+
+
+{# 必购 #}
+    <div id="swiperMenu">
+        <ul class="swiper-wrapper" style="list-style-type:none;">
+        {% for foo in mustbuy %}
+
+        <li>
+            <img src="{{ foo.img }}">
+        </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+{#  商品 #}
+    <div class="CVS">
+        <H2>
+            <img src="{{ shop0.0.img }}">
+        </H2>
+        <fieldset>
+            {% for foo in shop_1 %}
+                <a>
+                    <img src="{{ foo.img }}">
+                </a>
+            {% endfor %}
+        </fieldset>
+        <ul>
+            {% for foo in shop_3 %}
+            <li>
+                <img src="{{ foo.img }}">
+            </li>
+            {% endfor %}
+        </ul>
+
+        <ol>
+            {% for foo in shop_7 %}
+                <li>
+                    <a>
+                        <img src="{{ foo.img }}">
+                    </a>
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+
+
+
+    <div class="mainInfo">
+        {% for shows in shows%}
+            <section>
+                <h3>
+                    <a>更多 &gt;</a>
+                    <span></span>
+                </h3>
+                <div>
+                    {#                图片 #}
+                    <a>
+                        <img src="{{ shows.img }}">
+                    </a>
+                </div>
+                <ul>
+                    <li>
+                        <a>
+                            <img src="{{ shows.img1 }}">
+                        </a>
+                        {#                描述 #}
+                        <span class="description">
+                    {{ shows.longname1 }}
+                </span>
+                        {#                价格#}
+                        <a>
+                            &yen;{{ shows.price1 }}
+                            <s>&yen;{{ shows.marketprice1 }}</s>
+                        </a>
+                        <button><span>+</span></button>
+                    </li>
+                    <li>
+                        <a>
+                            <img src="{{ shows.img2 }}">
+                        </a>
+                        {#                描述 #}
+                        <span class="description">
+                    {{ shows.longname2 }}
+                </span>
+                        {#                价格 #}
+                        <a>
+                            &yen;{{ shows.price2 }}
+                            <s>&yen;{{ shows.marketprice2 }}</s>
+                        </a>
+                        <button><span>+</span></button>
+                    </li>
+                </ul>
+                <div class="description"></div>
+            </section>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

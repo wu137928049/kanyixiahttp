@@ -1,0 +1,26 @@
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block exScript %}
+        {{ block.super }}
+    <script type="text/javascript" src="{% static 'app/user/user_login.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+{#    用户框  #}
+    <form action="{% url 'app:login' %}" method="post" onsubmit="return subform()">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="exampleInputusername">用户</label>
+        <input type="text" name= "uname" class="form-control" id="username" placeholder="username">
+    </div>
+{#    密码框  #}
+    <div class="form-group">
+        <label for="exampleInputPassword1">密码</label>
+        <input type="password" name= "upwd"  class="form-control" id="word" placeholder="Password">
+        <span name= 'span' id="pwdmsg"></span>
+    </div>
+{#    提交框  #}
+    <button type="submit" class="btn btn-default">登录</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends 'base/base_main.html' %}
+{% load static %}
+{% block extStyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/mine/mine.css' %}">
+{% endblock %}
+{% block exScrit %}
+    <script type="text/javascript" src="{% static 'app/mine/mine.js'%}"></script>
+{% endblock %}
+{% block content %}
+    <div id="mine">
+        <div class="fixed">
+            {% if photo %}
+
+
+           <img src="{{ photo }}">
+            <p>
+                           <span name="use">{{ name }}</span>
+            </p>
+                     {% endif %}
+            <p>
+                <span class="glyphicon glyphicon-fire">等级</span>
+                <span class="glyphicon glyphicon-heart">收藏</span>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <span><a name='logi' href="{% url 'app:login' %}">{{ login }}</a></span>
+            </p>
+
+        </div>
+
+      <div id="regis"><span><a name = 'reg' href="{% url 'app:register' %}">{{ register }}</a>
+      </span>
+
+      </div>
+
+      <div class="mine">
+          <p>我的订单
+              <a><span>更多&gt;</span></a>
+          </p>
+
+          <div id="nav">
+              <ul>
+                  <li>
+                      <dl>
+                          <dt>
+                              <span class="glyphicon glyphicon-yen"></span>
+                          </dt>
+                          <dd>代付款</dd>
+                      </dl>
+                  </li>
+                   <li>
+                      <dl>
+                          <dt>
+                              <span class="glyphicon glyphicon-usd"></span>
+                          </dt>
+                          <dd>代收款</dd>
+                      </dl>
+                  </li>
+                   <li>
+                      <dl>
+                          <dt>
+                              <span class="glyphicon glyphicon-hand-down"></span>
+                          </dt>
+                          <dd>待评价</dd>
+                      </dl>
+                  </li>
+                   <li>
+                      <dl>
+                          <dt>
+                              <span class="glyphicon glyphicon-ruble"></span>
+                          </dt>
+                          <dd>退款/售后</dd>
+                      </dl>
+                  </li>
+              </ul>
+          </div>
+          <menu>
+              <ul>
+                  <li>
+                      <dl>
+                          <dt>
+                              <span class="glyphicon glyphicon-home"></span>
+                          </dt>
+                          <dd>积分商城</dd>
+                      </dl>
+                  </li>
+                  <li>
+                      <dl>
+                          <dt>
+                              <span class="
+glyphicon glyphicon-bitcoin"></span>
+                          </dt>
+                          <dd>优惠券</dd>
+                      </dl>
+                  </li>
+                  <li>
+                      <dl>
+                          <dt>
+                              <span class="glyphicon glyphicon-object-align-bottom"></span>
+                          </dt>
+                          <dd>收货地址</dd>
+                      </dl>
+                  </li>
+                  <li>
+                      <dl>
+                          <dt>
+                              <span class="glyphicon glyphicon-equalizer"></span>
+                          </dt>
+                          <dd>客户反馈</dd>
+                      </dl>
+                  </li>
+                  <li>
+                      <dl>
+                          <dt>
+                              <span class="glyphicon glyphicon-phone-alt"></span>
+                          </dt>
+                          <dd>关于我们</dd>
+                      </dl>
+                  </li>
+                  <li>
+                      <dl>
+                          <dt>
+                              <span class="
+glyphicon glyphicon-retweet"></span>
+                          </dt>
+                          <dd><a href="{% url 'app:logout' %}">退出</a></dd>
+                      </dl>
+                  </li>
+
+              </ul>
+
+          </menu>
+      </div>
+
+
+
+
+    </div>
+{% endblock %}

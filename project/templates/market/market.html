@@ -1,0 +1,104 @@
+{% extends 'base/base_main.html' %}
+{% load static %}
+
+{% block extStyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/market/market.css' %}">
+{% endblock %}
+{% block exScript %}
+    <script type="text/javascript" src="{% static 'app/market/market.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+{#    左侧 #}
+    <div id="market">
+    <aside>
+    <ul>
+        {% for foo in foot %}
+              <li>
+                <a href="{% url 'app:markert' foo.typeid '0' '0' %}">{{ foo.typename }}</a>
+              <span></span>
+            </li>
+        {% endfor %}
+    </ul>
+    </aside>
+{#    顶部 #}
+    <nav>
+        <ul>
+            <li id="all_type">
+                <span>全部类型
+                    <span id="all_type_icon" class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+            </li>
+            <li id="all_sort">
+                <span>综合排序
+                    <span id="all_sort_icon" class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+            </li>
+        </ul>
+
+    </nav>
+         <section>
+             <menu>
+                 <ul>
+                     {% for good in goods %}
+                     <li>
+                         <a href="#">
+                             <img src="{{ good.productimg }}">
+                             <span class="shoppingInfo">
+                                <h6>{{ good.productname }}</h6>
+
+                             <p class="detailTag">
+                                 <span>精选</span>
+                                 <span></span>
+                             </p>
+                             <p class="unit">
+                                 {{ good.specifices }}
+                             </p>
+                              <p class="price">
+                                    <span>&yen;{{ good.price }}</span>
+                                    <s>&yen;{{ good.marketprice }}</s>
+                                </p>
+                             </span>
+                         </a>
+                            <section>
+                                <button><span>-</span></button>
+                                <span>0</span>
+                                <button><span>+</span></button>
+                            </section>
+                     </li>
+                       {% endfor %}
+                 </ul>
+
+                    <div id="type_list">
+                         {% for type in all_type_list %}
+                            <div>
+                                <a href="{% url 'app:markert' typeid type.1 '0'%}">
+                                    <span>{{type.0}}</span>
+                                </a>
+                            </div>
+                           {% endfor %}
+                    </div>
+
+                    <div id="sort_list">
+                        <div>
+                            <a href="{% url 'app:markert' typeid cid '0' %}">
+                                <span>综合排序</span>
+                            </a>
+                            <a href="{% url 'app:markert' typeid cid '1' %}">
+                                <span>销量最高</span>
+                            </a>
+                            <a href="{% url 'app:markert' typeid cid '2' %}">
+                                <span>价格最高</span>
+                            </a>
+                            <a href="{% url 'app:markert' typeid cid '3' %}">
+                                <span>价格最低</span>
+                            </a>
+                        </div>
+                    </div>
+
+             </menu>
+
+         </section>
+    </div>
+{% endblock %}
